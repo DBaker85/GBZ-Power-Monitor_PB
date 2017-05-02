@@ -11,8 +11,8 @@ import os
 import sys
 import time
 
-onStateGPIO    = 2  # GPIO 02/pin 3
-lowBattGPIO    = 3  # GPIO 03/pin 5
+onstateGPIO    = 2  # GPIO 02/pin 3
+lowbatteryGPIO = 3  # GPIO 03/pin 5
 batteryGPIO    = 17  # GPIO 17/pin 0
 powerGPIO      = 27  # GPIO 27/pin 2
 sampleRate     = 0.1 # tenth of a second
@@ -23,8 +23,8 @@ lowalertVideo  = "~/GBZ-Power-Monitor_PB/lowbattalert.mp4"    # use no space or 
 playerFlag     = 0
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(onStateGPIO, GPIO.OUT)
-GPIO.setup(lowBattGPIO, GPIO.OUT)
+GPIO.setup(onstateGPIO, GPIO.OUT)
+GPIO.setup(lowbatteryGPIO, GPIO.OUT)
 GPIO.setup(batteryGPIO, GPIO.IN) # No pull_up_down for LBO with voltage clamped with diode
 GPIO.setup(powerGPIO, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
@@ -43,7 +43,7 @@ def lowBattery(channel):
   #If the LED is a solid condition, there will be no bounce.  Launch shutdown video and then gracefully shutdown
   if bounceSample is int(round(batteryTimeout / sampleRate)) - 1:
     #Send low batt signal to teensy
-    GPIO.output(owBattGPIO,True)
+    GPIO.output(lowbatteryGPIO,True)
     #Proceed with low batt warnings
     playerFlag = 1
     os.system("/usr/bin/omxplayer --no-osd --layer 999999 " + shutdownVideo + " --alpha 180;")
@@ -89,7 +89,7 @@ def powerSwitch(channel):
 
 def main():
   #Send power on state to teensy
-  GPIO.output(onStateGPIO,True)
+  GPIO.output(onstateGPIO,True)
 
   #if the Low Battery LED is active when the program launches, handle it
   if GPIO.input(batteryGPIO) is 0:
