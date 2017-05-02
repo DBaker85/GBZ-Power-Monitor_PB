@@ -1,10 +1,13 @@
 # GBZ-Power-Monitor a1.0a
-PowerBoost edition
+PowerBoost Teensy edition
 
 Background
 ----------
-Currently in the GBZ, the power switch works like a normal On/Off switch. The only problem is when you cut the power, it's kinda hard on the system. There's no clean dismounting of the drives. It's really just like yanking the power out. And that's been known to cause corrupted files and disks.
+Currently in the GBZ, the power switch works like a normal On/Off switch. The only problem is when you cut the power, it's kinda hard on the system. There's no clean dismounting of the drives. It's really just like yanking the power out. And that's been known to cause corrupted files and disks. This is a modified version of Camble's monitor that also sends out logic for on and low battery states.
 
+Original version
+----------
+[GBZ-Power-Monitor](https://github.com/Camble/GBZ-Power-Monitor_PB)
 
 Required Hardware and Components
 --------------------------------
@@ -46,7 +49,7 @@ Press Ctrl+X to exit, hit Y to save and press return.
 Next at the command prompt, copy this monitor and the video assets with the following command:
 
 ```
-cd ~;git clone https://github.com/Camble/GBZ-Power-Monitor_PB.git
+cd ~;git clone https://github.com/DBaker85/GBZ-Power-Monitor_PB.git
 ```
 
 Now, launch the Monitor manually and test that it's working properly
@@ -83,5 +86,3 @@ http://sudomod.com/forum/viewtopic.php?f=8&t=97
 
 Pre-order thread for Safe Shutdown Switch:
 http://sudomod.com/forum/viewtopic.php?f=3&t=1706
-
-Feel free to contact me on the Sudomod forums (www.sudomod.com/forum) or on the Sudomod Discord channel (https://discordapp.com/channels/188359728454303744/188359728454303744)
