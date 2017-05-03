@@ -44,7 +44,7 @@ def lowBattery(channel):
   if bounceSample is int(round(batteryTimeout / sampleRate)) - 1:
     #Send low batt signal to teensy
     GPIO.output(lowbatteryGPIO,True)
-    #Proceed with low batt warnings
+    #Proceed with low shutdown
     playerFlag = 1
     os.system("/usr/bin/omxplayer --no-osd --layer 999999 " + shutdownVideo + " --alpha 180;")
     if GPIO.input(batteryGPIO) is 0:
@@ -54,6 +54,9 @@ def lowBattery(channel):
 
   #If the LED is a solid for more than 10% of the timeout, we know that the battery is getting low.  Launch the Low Battery alert.
   if bounceSample > int(round(batteryTimeout / sampleRate * 0.1)):
+    #Send low batt signal to teensy
+    GPIO.output(lowbatteryGPIO,True)
+    #Proceed with low batt warnings
     playerFlag = 1
     os.system("/usr/bin/omxplayer --no-osd --layer 999999 " + lowalertVideo + " --alpha 160;")
     playerFlag = 0
