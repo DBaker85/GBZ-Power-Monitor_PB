@@ -12,7 +12,7 @@ import sys
 import time
 
 onstateGPIO    = 2  # GPIO 02/pin 3
-lowbatteryGPIO = 3  # GPIO 03/pin 5
+lowbatteryGPIO = 4  # GPIO 04/pin 7
 batteryGPIO    = 17  # GPIO 17/pin 0
 powerGPIO      = 27  # GPIO 27/pin 2
 sampleRate     = 0.1 # tenth of a second
