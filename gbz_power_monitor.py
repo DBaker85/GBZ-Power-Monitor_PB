@@ -92,8 +92,8 @@ def powerSwitch(channel):
 
 def main():
   #Send power on state to teensy
-  GPIO.output(onstateGPIO,True)
-
+  GPIO.output(lowbatteryGPIO,true)
+  GPIO.output(onstateGPIO,false)
   #if the Low Battery LED is active when the program launches, handle it
   if GPIO.input(batteryGPIO) is 0:
     lowBattery(batteryGPIO)
